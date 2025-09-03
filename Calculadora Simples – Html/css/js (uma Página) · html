@@ -1,0 +1,43 @@
+import java.util.Scanner;
+
+public class CalculadoraContínua {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        double num1, num2, result;
+        char op;
+        String cont;
+
+        System.out.println("Calculadora Contínua em Java");
+
+        do {
+            System.out.print("\nDigite o primeiro número: ");
+            num1 = sc.nextDouble();
+
+            System.out.print("Digite a operação (+, -, *, /): ");
+            op = sc.next().charAt(0);
+
+            System.out.print("Digite o segundo número: ");
+            num2 = sc.nextDouble();
+
+            switch(op) {
+                case '+': result = num1 + num2; break;
+                case '-': result = num1 - num2; break;
+                case '*': result = num1 * num2; break;
+                case '/': 
+                    if(num2 != 0) result = num1 / num2;
+                    else { System.out.println("Erro: divisão por zero"); continue; }
+                    break;
+                default: System.out.println("Operação inválida"); continue;
+            }
+
+            System.out.printf("Resultado: %.2f\n", result);
+
+            System.out.print("Deseja fazer outro cálculo? (s/n): ");
+            cont = sc.next();
+
+        } while(cont.equalsIgnoreCase("s"));
+
+        System.out.println("Obrigado por usar a calculadora!");
+        sc.close();
+    }
+}
